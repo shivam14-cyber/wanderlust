@@ -1,70 +1,61 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-4 ">
-  <div class="col-8 offset-2">
-    <form action="/listings" method="post" class="needs-validation" novalidate enctype="multipart/form-data" >
-      <div class="mb-3">
-        <label class="form-label">Title</label>
-        <input
-          type="text"
-          name="listing[title]"
-          placeholder="Enter the title"
-          class="form-control"required
-        >
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Description</label>
-        <textarea
-          name="listing[description]"
-          placeholder="Enter the description"
-          class="form-control" required
-        ></textarea>
-      </div>
+  <div class="row mt-4 ">
+    <div class="col-8 offset-2">
+      <form action="/listings" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input type="text" name="listing[title]" placeholder="Enter the title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea name="listing[description]" placeholder="Enter the description" class="form-control"
+            required></textarea>
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label">Image</label>
-        <input
-          type="file"
-          name="listing[image]"
-          class="form-control"
-        >
-      </div>
-      <div class="row">
-        <div class="col-lg-8 col-sm-12">
-          <div class="mb-3">
-        <label class="form-label">Country</label>
+        <div class="mb-3">
+          <label class="form-label">Image</label>
+          <input type="file" name="listing[image]" class="form-control">
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-sm-12">
+            <div class="mb-3">
+              <label class="form-label">Country</label>
 
-        <input
-          type="text"
-          name="listing[country]"
-          placeholder="Enter the country"
-          class="form-control"required
-        >
-      </div></div>
-        <div class="col-lg-4 col-sm-12"> 
-           <div class="mb-3">
-        <label class="form-label">Price</label>
-        <input
-          type="number"
-          name="listing[price]"
-          placeholder="Enter the price"
-          class="form-control" required
-        >
-      </div>
-      </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Location</label>
-        <input
-          type="text"
-          name="listing[location]"
-          placeholder="Enter the location"
-          class="form-control"required
-        >
-      </div>
-      <button class="btn btn-danger mb-3">
-        Add Listing
-      </button>
-    </form>
+              <input type="text" name="listing[country]" placeholder="Enter the country" class="form-control" required>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-12">
+            <div class="mb-3">
+              <label class="form-label">Price</label>
+              <input type="number" name="listing[price]" placeholder="Enter the price" class="form-control" required>
+            </div>
+          </div>
+        </div>
+       <div class="row">
+         <div class="mb-3 col-8">
+          <label class="form-label">Location</label>
+          <input type="text" name="listing[location]" placeholder="Enter the location" class="form-control" required>
+        </div>
+        <div class=" col-4 mb-3">
+          <label class="form-label">Category</label>
+          <select name="listing[category]" class="form-select form-control ">
+            <option value="Rooms">Rooms</option>
+            <option value="Mountains">Mountains</option>
+            <option value="Camping">Camping</option>
+            <option value="Trending">Trending</option>
+            <option value="Iconiccity">Iconic City</option>
+            <option value="Castle">Castle</option>
+            <option value="Pools">Pools</option>
+            <option value="Farms">Farms</option>
+            <option value="Arctic">Arctic</option>
+            <option value="Domes">Domes</option>
+          </select>
+        </div>
+       </div>
+        <button class="btn btn-danger mb-3">
+          Add Listing
+        </button>
+      </form>
+    </div>
   </div>
-</div>

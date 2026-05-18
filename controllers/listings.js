@@ -3,10 +3,15 @@ const maptiler = require("@maptiler/client");
 maptiler.config.apiKey = process.env.MAPTOKEN;
 
 //index router
-module.exports.index=async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
-};
+module.exports.index= async (req, res) => {
+  const { category } = req.query;
+  let filter = {};
+  if (category && category !== "All") {
+    filter.category = category;
+  }
+  const allListings = await Listing.find(filter);
+  res.render("listings/index", { allListings });
+}
 
 //new route
 module.exports.renderNewForm=(req, res) => {
@@ -31,16 +36,16 @@ module.exports.showRoute=async (req, res) => {
 };
 
 //create router
-module.exports.postRoute=async (req, res) => {
-  let url=req.file.path;
-  let filename=req.file.filename;
-  let listing = new Listing(req.body.listing);
-  listing.owner = req.user._id;
-  listing.image={url,filename};
+module.exports.postRoute = async (req, res) => {
+  let url = req.file.path;
+  let filename = req.file.filename;
+  let listing = new Listing({...req.body.listing,
+    owner: req.user._id,
+    image: { url, filename }
+  });
   await listing.save();
   res.redirect("/listings");
 };
-
 //edit router
 module.exports.editRouter = async (req, res) => {
   let listing = await Listing.findById(req.params.id);

@@ -1,74 +1,98 @@
 <% layout("/layouts/boilerplate") %>
 
-<!-- FILTERS -->
-<div class="container mt-3">
-  <div class="d-flex align-items-center gap-3 flex-wrap py-3">
-    <div class="text-center px-3 py-2  filter">
-      <i class="fa-solid fa-fire fs-5 text-danger"></i>
-      <p class="mb-0 small fw-semibold">Trending</p>
-    </div>
-    <div class="text-center px-3 py-2 filter">
-      <i class="fa-solid fa-bed fs-5 text-primary"></i>
-      <p class="mb-0 small fw-semibold">Rooms</p>
-    </div>
-    <div class="text-center px-3 py-2  filter">
-      <i class="fa-solid fa-mountain-city fs-5 text-success"></i>
-      <p class="mb-0 small fw-semibold">Iconic City</p>
-    </div>
-    <div class="text-center px-3 py-2  filter">
-      <i class="fa-solid fa-mountain fs-5 text-secondary"></i>
-      <p class="mb-0 small fw-semibold">Mountains</p>
-    </div>
-    <div class="text-center px-3 py-2  filter">
-      <i class="fa-solid fa-fort-awesome fs-5 text-warning"></i>
-      <p class="mb-0 small fw-semibold">Castle</p>
-    </div>
-    <div class="text-center px-3 py-2  filter">
-      <i class="fa-solid fa-person-swimming fs-5 text-info"></i>
-      <p class="mb-0 small fw-semibold">Pools</p>
-    </div>
-    <div class="text-center px-3 py-2 bfilter">
-      <i class="fa-solid fa-campground fs-5 text-dark"></i>
-      <p class="mb-0 small fw-semibold">Camping</p>
-    </div>
-    <div class="text-center px-3 py-2 filter">
-      <i class="fa-solid fa-cow fs-5 text-success"></i>
-      <p class="mb-0 small fw-semibold">Farms</p>
-    </div>
-    <div class="text-center px-3 py-2  filter">
-      <i class="fa-regular fa-snowflake fs-5 text-info"></i>
-      <p class="mb-0 small fw-semibold">Arctic</p>
-    </div>
-    <div class="text-center px-3 py-2  filter">
-      <i class="fa-solid fa-igloo fs-5 text-primary"></i>
-      <p class="mb-0 small fw-semibold">Domes</p>
-    </div>
+<style>
+  a{
+    text-decoration: none !important;
+    color: black !important;
+  }
+</style>
+  <!-- FILTERS -->
+  <div class="container mt-3">
+    <div class="d-flex align-items-center gap-3 flex-wrap py-3">
+      <a href="/listings?category=Trending">
+        <div class="text-center px-3 py-2  filter">
+          <i class="fa-solid fa-fire fs-5 text-danger"></i>
+          <p class="mb-0 small fw-semibold">Trending</p>
+        </div>
+      </a>
+      <a href="/listings?category=Rooms">
+        <div class="text-center px-3 py-2 filter">
+          <i class="fa-solid fa-bed fs-5 text-primary"></i>
+          <p class="mb-0 small fw-semibold">Rooms</p>
+        </div>
+      </a>
+      <a href="/listings?category=Iconiccity">
+        <div class="text-center px-3 py-2  filter">
+          <i class="fa-solid fa-mountain-city fs-5 text-success"></i>
+          <p class="mb-0 small fw-semibold">Iconic City</p>
+        </div>
+      </a>
+      <a href="/listings?category=Mountains">
+        <div class="text-center px-3 py-2  filter">
+          <i class="fa-solid fa-mountain fs-5 text-secondary"></i>
+          <p class="mb-0 small fw-semibold">Mountains</p>
+        </div>
+      </a>
+      <a href="/listings?category=Castle">
+        <div class="text-center px-3 py-2  filter">
+          <i class="fa-solid fa-fort-awesome fs-5 text-warning"></i>
+          <p class="mb-0 small fw-semibold">Castle</p>
+        </div>
+      </a>
+      <a href="/listings?category=Pools">
+        <div class="text-center px-3 py-2  filter">
+          <i class="fa-solid fa-person-swimming fs-5 text-info"></i>
+          <p class="mb-0 small fw-semibold">Pools</p>
+        </div>
+      </a>
+      <a href="/listings?category=Camping">
+        <div class="text-center px-3 py-2 filter">
+          <i class="fa-solid fa-campground fs-5 text-dark"></i>
+          <p class="mb-0 small fw-semibold">Camping</p>
+        </div>
+      </a>
+      <a href="/listings?category=Farms">
+        <div class="text-center px-3 py-2 filter">
+          <i class="fa-solid fa-cow fs-5 text-success"></i>
+          <p class="mb-0 small fw-semibold">Farms</p>
+        </div>
+      </a>
+      <a href="/listings?category=Arctic">
+        <div class="text-center px-3 py-2 filter">
+          <i class="fa-solid fa-igloo fs-5 text-primary"></i>
+          <p class="mb-0 small fw-semibold">Arctic</p>
+        </div>
+      </a>
+      <a href="/listings?category=Domes">
+        <div class="text-center px-3 py-2  filter">
+          <i class="fa-solid fa-igloo fs-5 text-primary"></i>
+          <p class="mb-0 small fw-semibold">Domes</p>
+        </div>
+      </a>
 
-  
+
+    </div>
   </div>
-</div>
 
-<!-- LISTINGS -->
-<div class="container mt-4">
-  <div class="row">
-    <% for(let listing of allListings) { %>
-      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-        <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
-          <div class="card shadow-sm border-0 rounded-4 overflow-hidden h-100">
-            <img src="<%= listing.image.url %>" 
-                 class="card-img-top"
-                 style="height: 200px; object-fit: cover;">
-            <div class="card-body">
-              <p class="mb-1 fw-bold">
-                <%= listing.title %>
-              </p>
-              <p class="mb-0 text-muted">
-                ₹<%= listing.price.toLocaleString("en-IN") %>/Night
-              </p>
+  <!-- LISTINGS -->
+  <div class="container mt-4">
+    <div class="row">
+      <% for(let listing of allListings) { %>
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+          <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden h-100">
+              <img src="<%= listing.image.url %>" class="card-img-top" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <p class="mb-1 fw-bold">
+                  <%= listing.title %>
+                </p>
+                <p class="mb-0 text-muted">
+                  ₹<%= listing.price.toLocaleString("en-IN") %>/Night
+                </p>
+              </div>
             </div>
-          </div>
-        </a>
-      </div>
-    <% } %>
+          </a>
+        </div>
+        <% } %>
+    </div>
   </div>
-</div>
