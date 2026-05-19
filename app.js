@@ -27,6 +27,9 @@ const { ListingSchema } = require("./schema.js");
 const listingRouter = require("./routes/listingrouter.js");
 const reviewRouter = require("./routes/reviewrouter.js");
 const userRouter = require("./routes/user.js");
+const footerRouter=require("./routes/footer.js");
+const hostingRouter=require("./routes/hosting.js");
+const airbnbRouter=require("./routes/airbnb.js");
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
@@ -77,42 +80,9 @@ main()
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
-
-
-app.get("/artical/privacy",(req,res)=>{
-  res.render("privacy/privacy.ejs");
-});
-
-app.get("/artical/terms",(req,res)=>{
-  res.render("privacy/termas.ejs");
-});
-
-app.get("/artical/help",(req,res)=>{
- res.render("artical/HelpCenter.ejs");
-});
-app.get("/artical/gethelp",(req,res)=>{
- res.render("artical/Gethelp.ejs");
-})
-app.get("/artical/aircover",(req,res)=>{
- res.render("artical/Aircover.ejs");
-})
-
-app.get("/artical/Anti",(req,res)=>{
- res.render("artical/Anti.ejs");
-})
-
-app.get("/artical/disbility",(req,res)=>{
- res.render("artical/disbility.ejs");
-})
-app.get("/artical/cancle",(req,res)=>{
- res.render("artical/Cancle.ejs");
-})
-
-app.get("/artical/repoter",(req,res)=>{
- res.render("artical/Repoter.ejs");
-})
-
-
+app.use("/artical",footerRouter);
+app.use("/hosting",hostingRouter);
+app.use("/airbnb",airbnbRouter);
 
 
 
