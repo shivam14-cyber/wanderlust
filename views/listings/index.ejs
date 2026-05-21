@@ -5,65 +5,78 @@
     text-decoration: none !important;
     color: black !important;
   }
+  .filter-link{
+  text-decoration: none;
+  color: black;
+}
+
+.filter{
+  border-bottom: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.filter.active{
+  border-bottom: 3px solid black;
+}
 </style>
   <!-- FILTERS -->
   <div class="container mt-3">
     <div class="d-flex align-items-center gap-3 flex-wrap py-3">
-      <a href="/listings?category=Trending">
-        <div class="text-center px-3 py-2  filter">
+      <a href="/listings?category=Trending" class="filter-link">
+        <div class="text-center px-3 py-2  filter ">
           <i class="fa-solid fa-fire fs-5 text-danger"></i>
           <p class="mb-0 small fw-semibold">Trending</p>
         </div>
       </a>
-      <a href="/listings?category=Rooms">
+      <a href="/listings?category=Rooms" class="filter-link">
         <div class="text-center px-3 py-2 filter">
           <i class="fa-solid fa-bed fs-5 text-primary"></i>
           <p class="mb-0 small fw-semibold">Rooms</p>
         </div>
       </a>
-      <a href="/listings?category=Iconiccity">
+      <a href="/listings?category=Iconiccity" class="filter-link">
         <div class="text-center px-3 py-2  filter">
           <i class="fa-solid fa-mountain-city fs-5 text-success"></i>
           <p class="mb-0 small fw-semibold">Iconic City</p>
         </div>
       </a>
-      <a href="/listings?category=Mountains">
+      <a href="/listings?category=Mountains" class="filter-link">
         <div class="text-center px-3 py-2  filter">
           <i class="fa-solid fa-mountain fs-5 text-secondary"></i>
           <p class="mb-0 small fw-semibold">Mountains</p>
         </div>
       </a>
-      <a href="/listings?category=Castle">
+      <a href="/listings?category=Castle" class="filter-link" >
         <div class="text-center px-3 py-2  filter">
           <i class="fa-solid fa-fort-awesome fs-5 text-warning"></i>
           <p class="mb-0 small fw-semibold">Castle</p>
         </div>
       </a>
-      <a href="/listings?category=Pools">
+      <a href="/listings?category=Pools" class="filter-link">
         <div class="text-center px-3 py-2  filter">
           <i class="fa-solid fa-person-swimming fs-5 text-info"></i>
           <p class="mb-0 small fw-semibold">Pools</p>
         </div>
       </a>
-      <a href="/listings?category=Camping">
+      <a href="/listings?category=Camping" class="filter-link">
         <div class="text-center px-3 py-2 filter">
           <i class="fa-solid fa-campground fs-5 text-dark"></i>
           <p class="mb-0 small fw-semibold">Camping</p>
         </div>
       </a>
-      <a href="/listings?category=Farms">
+      <a href="/listings?category=Farms" class="filter-link">
         <div class="text-center px-3 py-2 filter">
           <i class="fa-solid fa-cow fs-5 text-success"></i>
           <p class="mb-0 small fw-semibold">Farms</p>
         </div>
       </a>
-      <a href="/listings?category=Arctic">
+      <a href="/listings?category=Arctic" class="filter-link">
         <div class="text-center px-3 py-2 filter">
           <i class="fa-regular fa-snowflake text-primary"></i>
           <p class="mb-0 small fw-semibold">Arctic</p>
         </div>
       </a>
-      <a href="/listings?category=Domes">
+      <a href="/listings?category=Domes" class="filter-link">
         <div class="text-center px-3 py-2  filter">
           <i class="fa-solid fa-igloo fs-5 text-primary"></i>
           <p class="mb-0 small fw-semibold">Domes</p>
@@ -96,3 +109,19 @@
         <% } %>
     </div>
   </div>
+
+  <script>
+    const filters = document.querySelectorAll(".filter-link");
+
+filters.forEach((link) => {
+  link.addEventListener("click", function () {
+
+    localStorage.setItem("activeFilter", this.href);
+
+  });
+
+  if (localStorage.getItem("activeFilter") === link.href) {
+    link.querySelector(".filter").classList.add("active");
+  }
+});
+  </script>
